@@ -43,6 +43,8 @@ namespace CA2_solution_2025
                     Console.WriteLine("Please enter User ID");
                     input = Console.ReadLine();
                 }
+                if (input == "U000") break;// exit if terminating
+
                 Console.WriteLine("Please enter Number of Steps");
 
                 while ((!int.TryParse(Console.ReadLine(), out steps)) || (steps < 0))
@@ -157,13 +159,13 @@ namespace CA2_solution_2025
     {
         for (int i = 0; i < ranges.Length - 1; i++)
         {
-            if ((steps >= ranges[i]) && (steps <= ranges[i + 1]))
+            if ((steps >= ranges[i]) && (steps < ranges[i + 1]))
             {
                 return i;
             }
           
         }
-        if (steps > ranges[ranges.Length - 1])
+        if (steps >= ranges[ranges.Length - 1])
                 return ranges.Length - 1;
 
         return -1;
